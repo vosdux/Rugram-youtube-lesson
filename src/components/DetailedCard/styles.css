@@ -1,0 +1,61 @@
+.cnDetailedCardRoot {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    border: 1px solid #dbdbdb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.cnDetailedCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 60px;
+    padding-left: 20px;
+    background-color: #fff;
+}
+
+.cnDetailedCardImg {
+    height: 300px;
+    width: 100%;
+}
+
+.cnDetailedCardButtons {
+    display: flex;
+    padding: 10px;
+}
+
+.cnDetailedCardLikes {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.cnDetailedCardComments {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 10px 10px;
+}
+
+.cnDetailedCardTeaxtArea {
+    border: none;
+    background-color: #fff;
+    padding: 10px;
+    outline: none;
+    resize: none;
+}
+
+.cnDetailedCardLikeIcon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cnDetailedCardLikeComment {
+    cursor: pointer;
+}
+
+.cnDetailedCardCommentTitle {
+    font-size: 14px;
+    color: #dbdbdb;
+    cursor: pointer;
+}

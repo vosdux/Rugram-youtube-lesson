@@ -1,0 +1,10 @@
+.cnCommentRoot {
+    display: flex;
+    align-items: center;
+}
+
+.cnCommentName {
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 5px;
+}
