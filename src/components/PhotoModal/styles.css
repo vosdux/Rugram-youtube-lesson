@@ -1,0 +1,68 @@
+.cnBodyOverflow {
+    overflow: hidden;
+}
+
+.cnModal {
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    outline: none;
+}
+
+.cnModalOverlay {
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.cnModalRoot {
+    display: flex;
+}
+
+.cnModalImgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    min-height: 1024px;
+    min-width: 500px;
+}
+
+.cnModalImg {
+    max-width: 1024px;
+    max-height: 1024px;
+}
+
+.cnModalCommentsBlock {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cnModalHeader {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    height: 30px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.cnModalComments {
+    max-height: 1024px;
+    padding: 10px;
+}
+
+.cnModalIcons {
+    padding: 10px;
+}
+
+.cnModalLikeIcon {
+    cursor: pointer;
+}

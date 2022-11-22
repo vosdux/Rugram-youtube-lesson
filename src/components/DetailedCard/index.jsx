@@ -3,6 +3,8 @@ import cn from 'classnames';
 import { nanoid } from 'nanoid';
 import Comment from '../Comment';
 import UserBadge from '../UserBadge';
+import PhotoModal from '../PhotoModal';
+import TextArea from '../TextArea';
 
 import './styles.css';
 
@@ -15,8 +17,21 @@ const DetailedCard = ({
     isLikedByYou,
     comments,
     className,
+    onLikeClick,
+    id,
+    onCommentSendClick,
+    mutateLoading,
 }) => {
     const [isCommentsShown, setIsCommentsShown] = useState(false);
+    const [comment, setComment] = useState('');
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const handleSendCommentClick = () => {
+        if (comment) {
+            onCommentSendClick(id, comment);
+            setComment('');
+        }
+    };
 
     const renderComments = () => {
         if (comments.length > 2 && !isCommentsShown) {
@@ -34,6 +49,16 @@ const DetailedCard = ({
         return comments.map((comment) => <Comment {...comment} key={nanoid()} />)
     };
 
+    const onCloseModal = () => {
+        setComment('')
+        setIsModalVisible(false);
+    };
+
+    const onOpenModal = () => {
+        setComment('')
+        setIsModalVisible(true);
+    }
+
     return (
         <div className={cn("cnDetailedCardRoot", className)}>
             <div className="cnDetailedCardHeader">
@@ -43,8 +68,8 @@ const DetailedCard = ({
                 <img src={imgUrl} alt="img" className='cnDetailedCardImg' />
             </div>
             <div className="cnDetailedCardButtons">
-                <i className={`${isLikedByYou ? 'fas' : 'far'} fa-heart cnDetailedCardLikeIcon`} />
-                <i className="fas fa-comment cnDetailedCardLikeComment" />
+                <i onClick={() => onLikeClick(id)} className={`${isLikedByYou ? 'fas' : 'far'} fa-heart cnDetailedCardLikeIcon`} />
+                <i className="fas fa-comment cnDetailedCardLikeComment" onClick={onOpenModal} />
             </div>
             <div className="cnDetailedCardLikes">
                 {`Оценили ${likes} человек`}
@@ -52,7 +77,29 @@ const DetailedCard = ({
             <div className="cnDetailedCardComments">
                 {renderComments()}
             </div>
-            <textarea className='cnDetailedCardTeaxtArea' />
+            <TextArea
+                value={comment}
+                onChange={setComment}
+                placeholder='Введите комментарий'
+                isLoading={mutateLoading}
+                onSubmit={handleSendCommentClick}
+                buttonText="Отправить"
+            />
+            <PhotoModal
+                comments={comments}
+                isOpen={isModalVisible}
+                onClose={onCloseModal}
+                userName={userName}
+                avatarUrl={avatarUrl}
+                userId={userId}
+                commentValue={comment}
+                setCommentValue={setComment}
+                onCommentSubmit={handleSendCommentClick}
+                isCommentLoading={mutateLoading}
+                imgUrl={imgUrl}
+                isLikedByYou={isLikedByYou}
+                onLikeClick={() => onLikeClick(id)}
+            />
         </div>
     );
 };
