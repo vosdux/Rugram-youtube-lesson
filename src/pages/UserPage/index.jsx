@@ -14,8 +14,10 @@ const UserPage = () => {
     const authorizedUser = useSelector(state => state.users.authorizedUser);
     const user = useSelector(state => state.users.user);
     const posts = useSelector(state => state.postsByUser.posts);
+    const isPostsError = useSelector(state => state.postsByUser.isPostsError);
     const isPostsLoading = useSelector(state => state.postsByUser.isPostsLoading);
     const isUserLoading = useSelector(state => state.users.isUserLoading);
+    const isUserError = useSelector(state => state.users.isUserError);
     const mutateLoading = useSelector(state => state.photos.isMutateLoading);
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -56,7 +58,7 @@ const UserPage = () => {
             {isPostsLoading || isUserLoading ? <div className="cnMainLoaderContainer">
                 <Bars color="#000BFF" height={80} width={80} />
             </div> : <div className="cnUserPageRoot">
-                <UserBio
+                {!isUserError && <UserBio
                     avatarUrl={user.avatarUrl}
                     nickname={user.nickname}
                     subscribed={user.subscribers.length}
@@ -67,7 +69,7 @@ const UserPage = () => {
                     url={user.url}
                     isMyPage={id == authorizedUser.id}
                     isSubscribed={user.subscribers.includes(authorizedUser.id)}
-                />
+                />}
 
                 <div className="cnUserPageRootContent">
                     {postsForRender.length ? <InfiniteScroll
@@ -99,7 +101,7 @@ const UserPage = () => {
                                 onCommentSubmit={(comment) => onCommentSendClick(id, comment)}
                                 isMutateLoading={mutateLoading}
                             />)}
-                    </InfiniteScroll> : <p className="cnUserPageNoPosts">User dont have posts!</p>}
+                    </InfiniteScroll> : !isPostsError && <p className="cnUserPageNoPosts">User dont have posts!</p>}
                 </div>
             </div>}
         </Layout>

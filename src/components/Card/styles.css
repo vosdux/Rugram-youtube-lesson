@@ -17,6 +17,9 @@
 .cnCardImage {
     width: 300px;
     height: 300px;
+}
+
+.cnCardImage img {
     object-fit: cover;
     border-radius: 10px;
 }
@@ -30,6 +33,7 @@
     display: none;
     background-color: #000;
     opacity: .4;
+    border-radius: 10px;
 }
 
 .cnCardIcons {

@@ -1,6 +1,5 @@
 import { makeRequest } from "./makeRequest";
 
-
 const URL = '/posts';
 
 export const getPhotos = (config) => makeRequest({

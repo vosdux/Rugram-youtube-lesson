@@ -5,8 +5,10 @@ import Comment from '../Comment';
 import UserBadge from '../UserBadge';
 import PhotoModal from '../PhotoModal';
 import TextArea from '../TextArea';
+import ImageWithLoader from '../ImageWithLoader';
 
 import './styles.css';
+
 
 const DetailedCard = ({
     userName,
@@ -64,8 +66,8 @@ const DetailedCard = ({
             <div className="cnDetailedCardHeader">
                 <UserBadge nickName={userName} avatarUrl={avatarUrl} id={userId} />
             </div>
-            <div>
-                <img src={imgUrl} alt="img" className='cnDetailedCardImg' />
+            <div className='cnDetailedCardImgWrapper'>
+                <ImageWithLoader className="cnDetailedCardImg" src={imgUrl} alt="img" />
             </div>
             <div className="cnDetailedCardButtons">
                 <i onClick={() => onLikeClick(id)} className={`${isLikedByYou ? 'fas' : 'far'} fa-heart cnDetailedCardLikeIcon`} />

@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 import Comment from '../Comment';
 import TextArea from '../TextArea';
 import UserBadge from '../UserBadge';
+import ImageWithLoader from '../ImageWithLoader';
+
 import './styles.css'
 
 const PhotoModal = ({ 
@@ -42,7 +44,7 @@ const PhotoModal = ({
         >
             <div className="cnModalRoot">
                 <div className="cnModalImgWrapper">
-                    <img src={imgUrl} alt={imgUrl} className="cnModalImg" />
+                    <ImageWithLoader src={imgUrl} alt={imgUrl} className="cnModalImg" />
                 </div>
                 <div className="cnModalCommentsBlock">
                     <div>
