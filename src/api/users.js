@@ -7,3 +7,12 @@ export const getUser = (userId, config) => makeRequest({
     url: `${URL}/${userId}`,
     ...config,
 });
+
+export const mutateUser = (config) => {
+    config.url = `${URL}${config.url}`;
+
+    return makeRequest({
+        method: 'PUT',
+        ...config,
+    });
+};

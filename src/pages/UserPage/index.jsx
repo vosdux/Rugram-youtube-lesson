@@ -7,7 +7,7 @@ import Card from "../../components/Card";
 import Layout from "../../components/Layout";
 import UserBio from "../../components/UserBio";
 import { getPostsByUser, sendCommentOnUserPage, toggleLikeOnPost } from "../../redux/actions/postsByUser";
-import { getUser } from "../../redux/actions/users";
+import { getUser, mutateUser } from "../../redux/actions/users";
 import './styles.css'
 
 const UserPage = () => {
@@ -18,6 +18,7 @@ const UserPage = () => {
     const isPostsLoading = useSelector(state => state.postsByUser.isPostsLoading);
     const isUserLoading = useSelector(state => state.users.isUserLoading);
     const isUserError = useSelector(state => state.users.isUserError);
+    const isUserMutateLoading = useSelector(state => state.users.isMutateLoading);
     const mutateLoading = useSelector(state => state.photos.isMutateLoading);
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -53,6 +54,10 @@ const UserPage = () => {
         setPage(page + 1);
     };
 
+    const onEdit = async (data) => {
+        await dispatch(mutateUser(data, user.id));
+    };
+
     return (
         <Layout nickName={authorizedUser.nickname} id={authorizedUser.id} avatarUrl={authorizedUser.avatarUrl}>
             {isPostsLoading || isUserLoading ? <div className="cnMainLoaderContainer">
@@ -69,6 +74,8 @@ const UserPage = () => {
                     url={user.url}
                     isMyPage={id == authorizedUser.id}
                     isSubscribed={user.subscribers.includes(authorizedUser.id)}
+                    onEdit={onEdit}
+                    fromLoading={isUserMutateLoading}
                 />}
 
                 <div className="cnUserPageRootContent">

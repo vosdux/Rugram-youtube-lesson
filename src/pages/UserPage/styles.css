@@ -23,6 +23,10 @@
     flex-wrap: wrap;
 }
 
+.cnInput {
+    margin-bottom: 21px;
+}
+
 
 .cnUserPageNoPosts {
     margin: auto;

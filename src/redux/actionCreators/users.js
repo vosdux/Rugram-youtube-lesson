@@ -4,6 +4,9 @@ export const GET_USER_STARTED = 'GET_USER_STARTED';
 export const GET_AUTHORIZED_USER_SUCCEESS = 'GET_AUTHORIZED_USER_SUCCEESS';
 export const GET_AUTHORIZED_USER_FAILED = 'GET_AUTHORIZED_USER_FAILED';
 export const GET_AUTHORIZED_USER_STARTED = 'GET_AUTHORIZED_USER_STARTED';
+export const MUTATE_USER_SUCCESS = 'MUTATE_USER_SUCCESS';
+export const MUTATE_USER_FAILED = 'MUTATE_USER_FAILED';
+export const MUTATE_USER_STARTED = 'MUTATE_USER_STARTED';
 
 export const getUserSuccess = (user) => ({
     type: GET_USER_SUCCESS,
@@ -34,3 +37,15 @@ export const getAuthorizedUserStarted = () => ({
 });
 
 
+export const mutateUserSuccess = () => ({
+    type: MUTATE_USER_SUCCESS,
+});
+
+export const mutateUserFailed = (error) => ({
+    type: MUTATE_USER_FAILED,
+    payload: error,
+});
+
+export const mutateUserStarted = () => ({
+    type: MUTATE_USER_STARTED,
+});

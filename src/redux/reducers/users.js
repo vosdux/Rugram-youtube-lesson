@@ -1,4 +1,4 @@
-import { GET_AUTHORIZED_USER_SUCCEESS, GET_USER_SUCCESS, GET_USER_FAILED, GET_USER_STARTED, GET_AUTHORIZED_USER_STARTED, GET_AUTHORIZED_USER_FAILED } from "../actionCreators/users";
+import { GET_AUTHORIZED_USER_SUCCEESS, GET_USER_SUCCESS, GET_USER_FAILED, GET_USER_STARTED, GET_AUTHORIZED_USER_STARTED, GET_AUTHORIZED_USER_FAILED, MUTATE_USER_STARTED, MUTATE_USER_SUCCESS } from "../actionCreators/users";
 
 const initialState = {
     user: {},
@@ -7,6 +7,7 @@ const initialState = {
     isAuthorizedUserLoading: true,
     isAuthorizedError: true,
     isUserError: false,
+    isMutateLoading: false,
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -52,6 +53,18 @@ export const usersReducer = (state = initialState, action) => {
                 isAuthorizedUserLoading: false,
                 isAuthorizedError: true,
             };
+
+        case MUTATE_USER_STARTED:
+            return {
+                ...state,
+                isMutateLoading: true,
+            };
+
+        case MUTATE_USER_SUCCESS:
+            return {
+                ...state,
+                isMutateLoading: false
+            }
 
         default:
             return {

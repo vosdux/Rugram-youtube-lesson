@@ -1,0 +1,21 @@
+.cnInputRoot {
+    position: relative;
+}
+
+.cnInputItem {
+    padding: 7px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+}
+
+.cnInputError {
+    position: absolute;
+    bottom: -19px;
+    left: 0;
+    color: tomato;
+}
+
+.cnInputWithError {
+    border: 1px solid tomato
+}
